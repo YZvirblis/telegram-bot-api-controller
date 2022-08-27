@@ -15,11 +15,11 @@ const createClientHandler = async (client) => {
   }
 };
 
-const editClientHandler = async (chatID, client) => {
+const editClientHandler = async (username, client) => {
   try {
     const db = await connectToDatabase();
     const clients = await db.collection("Clients");
-    const res = await clients.findOneAndUpdate({ chatID }, { $set: client });
+    const res = await clients.findOneAndUpdate({ username }, { $set: client });
     console.log("EDIT CLIENT SUCCESS: ", res);
     return { status: 200, message: res };
   } catch (err) {

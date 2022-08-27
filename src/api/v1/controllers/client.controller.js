@@ -29,8 +29,8 @@ const createClient = async (request, response, next) => {
 
 // EDIT CLIENT
 const editClient = async (request, response, next) => {
-  const { id, client } = request.body;
-  const res = await editClientHandler(id, client);
+  const { username, client } = request.body;
+  const res = await editClientHandler(username, client);
   response.status(res.status).json(res.message);
 };
 
