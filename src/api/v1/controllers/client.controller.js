@@ -29,6 +29,7 @@ const createClient = async (request, response, next) => {
 
 // EDIT CLIENT
 const editClient = async (request, response, next) => {
+  console.log(request.body);
   const { client } = request.body;
   const res = await editClientHandler(client.username, client);
   response.status(res.status).json(res.message);
@@ -36,8 +37,8 @@ const editClient = async (request, response, next) => {
 
 // DELETE CLIENT
 const deleteClient = async (request, response, next) => {
-  const { id } = request.body;
-  const res = await deleteClientHandler(id);
+  const { username } = request.body;
+  const res = await deleteClientHandler(username);
   response.status(res.status).json(res.message);
 };
 

@@ -28,11 +28,11 @@ const editClientHandler = async (username, client) => {
   }
 };
 
-const deleteClientHandler = async (chatID) => {
+const deleteClientHandler = async (username) => {
   try {
     const db = await connectToDatabase();
     const clients = await db.collection("Clients");
-    const res = await clients.findOneAndDelete({ chatID });
+    const res = await clients.findOneAndDelete({ username });
     console.log("DELETE CLIENT SUCCESS: ", res);
     return { status: 200, message: res };
   } catch (err) {
